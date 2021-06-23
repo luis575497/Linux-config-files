@@ -2,7 +2,7 @@
 
 1. Oh my bash
 2. Yaourt
-3. Vim1
+3. Vim
 4. Qtile
 5. Rofi
 6. feh
@@ -19,8 +19,10 @@
   - Arch Silence se puede instalar des AUR con el siguiente comando `yaourt -S arch-silence-grub-theme-git`
   - Modificar en el archivo de configuración la ubicacion del tema
 15. Lightdm
-  - lightdm-webkit-greeter (yaourt)
-  - lightdm-webkit-theme-aether (yaourt)
+  - Instalar el un greeter `yaourt -S lightdm-webkit-greeter`
+  - Instalar el tema `yaourt -S lightdm-webkit-theme-aether`
+  - Detener el administrador de pantalla que se esté utilizando `systemctl stop sddm`
+  - Hablitar lightdm `systemctl enable lightdm.service`
 16. Cambiar el comando ls
   - Instalar Exa `sudo pacman -S exa`
   - Establecer los alias en el bashrc `alias ll="exa --long -all" 
