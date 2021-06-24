@@ -28,3 +28,5 @@
 17. Cambiar el comando ls
   - Instalar Exa `sudo pacman -S exa`
   - Establecer los alias en el bashrc `alias ll="exa --long -all" 
+18. Xranrd para controlar los valores de la pantalla
+  - `sudo pacman -S xorg-xrandr`
