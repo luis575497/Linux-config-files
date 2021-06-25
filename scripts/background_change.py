@@ -16,10 +16,12 @@ def cambiar_fondo():
         # Si el array esta vacio se vuelve a generar el mismo
         if len(posiciones) == 0:
             posiciones = [n for n in range(len(paht_img))]
+
         img_selec = random.choice(posiciones)
+        print(img_selec)
         os.system(f"feh --bg-fill {paht_img[img_selec]}")
-        time.sleep(630)
-        posiciones.pop(img_selec) # Eliminar la posicion de la imagen seleccionada
+        time.sleep(500)
+        posiciones.remove(img_selec) # Eliminar la posicion de la imagen seleccionada
 
 if __name__ == '__main__':
     cambiar_fondo()
