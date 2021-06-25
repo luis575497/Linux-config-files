@@ -26,7 +26,7 @@
 
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, Match
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 import os
@@ -53,6 +53,8 @@ icons = {
         "arrow":"",
         "keyboard":"",
         "python":"",
+        "audio":'',
+        "battery":"",
         }
 
 
@@ -106,16 +108,29 @@ keys = [
     Key([mod], 'w', lazy.spawn('rofi -show window')),
 ]
 
-groups = [Group(i) for i in '12345789']
+#groups = [Group(i) for i in '12345789']
+
+__groups = {
+        1 : Group(name=""),                                                                # Grupo para los terminales
+        2 : Group(name="", matches=[Match(wm_class=["firefox","brave"])],layout="bsp"),                 # Grupo para los navegadores
+        3 : Group(name=""),
+        4 : Group(name=""),
+        5 : Group(name="", matches=[Match(wm_class=["dolphin"])]),                         # Grupo para File Explorer
+        }
+
+groups = [__groups[i] for i in __groups]
+
+def get_group_key(name):
+    return [k for k,g in __groups.items() if g.name == name][0]
 
 for i in groups:
     keys.extend([
         # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen(),
+        Key([mod], str(get_group_key(i.name)), lazy.group[i.name].toscreen(),
             desc="Switch to group {}".format(i.name)),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
+        Key([mod, "shift"], str(get_group_key(i.name)), lazy.window.togroup(i.name, switch_group=True),
             desc="Switch to & move focused window to group {}".format(i.name)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
@@ -128,7 +143,14 @@ layouts = [
     #layout.Max(),
     # Try more layouts by unleashing below layouts.
     #layout.Stack(num_stacks=2),
-    #layout.Bsp(),
+    layout.Bsp(
+        border_width=3,
+        border_focus=color[4],
+        border_normal=color[1],
+        single_border_width=0,
+        margin=2,
+        change_size=5,
+        ),
     #layout.Matrix(),
     layout.MonadTall(
         border_width=3,
@@ -136,7 +158,7 @@ layouts = [
         border_normal=color[1],
         single_border_width=0,
         margin=2,
-        change_size=1,
+        change_size=5,
         ),
     #layout.MonadWide(),
     #layout.RatioTile(),
@@ -159,21 +181,24 @@ screens = [
         top=bar.Bar(
             [
                 widget.TextBox(text=icons["python"], background=color[0], foreground=color[2], fontsize=22),
-                widget.GroupBox(font="Ubuntu Bold", borderwidth = 2, highlight_method = "line", highlight_color=color[1], rounded=False, active=color[2], inactive=color[3], background=color[0]),
+                widget.CurrentLayout(font="Fira Sans Medium", foreground=color[3], fontshadow=color[1]),
+                widget.GroupBox(font="Ubuntu Bold", borderwidth = 2, highlight_method = "line", highlight_color=color[0], rounded=False, active=color[2], inactive=color[3], background=color[0], fontsize=23),
+                widget.TextBox(text="      "),
                 widget.WindowName(background=color[0], foreground=color[2], font="Fira Sans Medium"),
                 widget.TextBox(text=icons["arrow"], background=color[0], foreground=color[2], padding=1, fontsize=102, width=38),
                 widget.Net(background=color[2],interface="wlp1s0", format="{down}↓↑{up}", foreground=color[3]),
                 widget.TextBox(text=icons["wifi"],background=color[2], fontsize=35),
                 widget.TextBox(text=icons["arrow"], background=color[2], foreground=color[3], padding=1, fontsize=102, width=38),
+                widget.TextBox(text=icons["battery"],background=color[3], foreground=color[2], fontsize=27),
                 widget.Battery(background=color[3], format="{percent:2.0%}",foreground=color[2]),
-                #widget.BatteryIcon(background=color[3]),
                 widget.TextBox(text=icons["arrow"], background=color[3], foreground=color[2], padding=1, fontsize=102, width=38),
                 widget.TextBox(text=icons["clock"],background=color[2], fontsize=30),
-                widget.Clock(background=color[2],foreground=color[3],format='%I:%M %p'),
+                widget.Clock(background=color[2],foreground=color[3],format='%I:%M'),
                 widget.TextBox(text=icons["arrow"], background=color[2], foreground=color[3], padding=1, fontsize=102, width=38),
                 widget.TextBox(text=icons["keyboard"], background=color[3], foreground=color[2], fontsize=25),
                 widget.KeyboardLayout(background=color[3], foreground=color[2],configured_keyboards=["us","es"]),
                 widget.TextBox(text=icons["arrow"], background=color[3], foreground=color[2], padding=1, fontsize=102, width=38),
+                widget.Volume(background=color[2],foreground=color[3]),
                 widget.QuickExit(default_text="\u23FB", fontsize=18, countdown_format="{}", countdown_start=10,background=color[2]),
                 widget.Moc(background=color[2],play_color=color[3], max_chars=20),
             ],
