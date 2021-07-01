@@ -1,28 +1,9 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+# -*- coding: utf-8 -*-
+#  _    _   _ ___ ____
+# | |  | | | |_ _/ ___|
+# | |  | | | || |\___ \
+# | |__| |_| || | ___) |
+# |_____\___/|___|____/
 
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget
@@ -106,16 +87,22 @@ keys = [
     # Lanzador de Rofi
     Key([mod], 'r', lazy.spawn('rofi -show run')),
     Key([mod], 'w', lazy.spawn('rofi -show window')),
+
+    # Control de audio y brillo
+    Key([mod], 'F2', lazy.spawn('amixer -D pulse sset Master 5%-')),
+    Key([mod], 'F3', lazy.spawn('amixer -D pulse sset Master 5%+')),
+    Key([mod], 'F4', lazy.spawn('xrandr --output eDP --brightness 0.4')),
+    Key([mod], 'F5', lazy.spawn('xrandr --output eDP --brightness 0.9')),
 ]
 
 #groups = [Group(i) for i in '12345789']
 
 __groups = {
         1 : Group(name=""),                                                                # Grupo para los terminales
-        2 : Group(name="", matches=[Match(wm_class=["firefox","brave"])],layout="bsp"),                 # Grupo para los navegadores
+        2 : Group(name="", matches=[Match(wm_class=["firefox","brave"])]),                 # Grupo para los navegadores
         3 : Group(name=""),
-        4 : Group(name=""),
-        5 : Group(name="", matches=[Match(wm_class=["dolphin"])]),                         # Grupo para File Explorer
+        4 : Group(name="", matches=[Match(wm_class=["Thunar"])]),                         # Grupo para File Explorer
+        5 : Group(name="", matches=[Match(wm_class=["zoom"])]),                            # Grupo para Zoom
         }
 
 groups = [__groups[i] for i in __groups]
@@ -143,14 +130,14 @@ layouts = [
     #layout.Max(),
     # Try more layouts by unleashing below layouts.
     #layout.Stack(num_stacks=2),
-    layout.Bsp(
-        border_width=3,
-        border_focus=color[4],
-        border_normal=color[1],
-        single_border_width=0,
-        margin=2,
-        change_size=5,
-        ),
+    #layout.Bsp(
+    #    border_width=3,
+    #    border_focus=color[4],
+    #    border_normal=color[1],
+    #    single_border_width=0,
+    #    margin=2,
+    #    change_size=5,
+    #    ),
     #layout.Matrix(),
     layout.MonadTall(
         border_width=3,
@@ -169,7 +156,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Cantarell',
+    font='Fira Sans Medium',
     fontsize=16,
     padding=5,
 )
@@ -181,10 +168,10 @@ screens = [
         top=bar.Bar(
             [
                 widget.TextBox(text=icons["python"], background=color[0], foreground=color[2], fontsize=22),
-                widget.CurrentLayout(font="Fira Sans Medium", foreground=color[3], fontshadow=color[1]),
-                widget.GroupBox(font="Ubuntu Bold", borderwidth = 2, highlight_method = "line", highlight_color=color[0], rounded=False, active=color[2], inactive=color[3], background=color[0], fontsize=23),
+                widget.CurrentLayout( foreground=color[3], fontshadow=color[1]),
+                widget.GroupBox( borderwidth = 2, highlight_method = "line", highlight_color=color[0], rounded=False, active=color[2], inactive=color[3], background=color[0], fontsize=23),
                 widget.TextBox(text="      "),
-                widget.WindowName(background=color[0], foreground=color[2], font="Fira Sans Medium"),
+                widget.WindowName(background=color[0], foreground=color[2]),
                 widget.TextBox(text=icons["arrow"], background=color[0], foreground=color[2], padding=1, fontsize=102, width=38),
                 widget.Net(background=color[2],interface="wlp1s0", format="{down}↓↑{up}", foreground=color[3]),
                 widget.TextBox(text=icons["wifi"],background=color[2], fontsize=35),
@@ -198,13 +185,13 @@ screens = [
                 widget.TextBox(text=icons["keyboard"], background=color[3], foreground=color[2], fontsize=25),
                 widget.KeyboardLayout(background=color[3], foreground=color[2],configured_keyboards=["us","es"]),
                 widget.TextBox(text=icons["arrow"], background=color[3], foreground=color[2], padding=1, fontsize=102, width=38),
+                widget.TextBox(text="Vol:", background=color[2], foreground=color[3]),
                 widget.Volume(background=color[2],foreground=color[3]),
                 widget.QuickExit(default_text="\u23FB", fontsize=18, countdown_format="{}", countdown_start=10,background=color[2]),
                 widget.Moc(background=color[2],play_color=color[3], max_chars=20),
             ],
             25,
             background=color[0],
-            opacity=0.95,
         ),
     ),
 ]
