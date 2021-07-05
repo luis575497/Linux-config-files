@@ -10,18 +10,18 @@ IMAGEN
     1. Rofi (Lanzador de aplicaciones)
     2. feh (Cambiar el fondo de pantalla)
     3. Picom (Compositor de ventanas, transparencia)
-      - Especificar la ubicación del archivo de configuración
-      - Ejecutar esta version de picom para efectos y transiciones `yaourt -S picom-jonaburg-git`
+       - Especificar la ubicación del archivo de configuración
+       - Ejecutar esta version de picom para efectos y transiciones `yaourt -S picom-jonaburg-git`
 4. Herramientas para el terminal
     1. Alacritty
     2. Starship prompt
     3. Nerd Fonts
     5. Fzf
     6. Bat
-      - Agregar a bashrc el alias `alias cat="bat"`
+       - Agregar a bashrc el alias `alias cat="bat"`
     7. Exa
-      - Instalar Exa `sudo pacman -S exa`
-      - Establecer los alias en el bashrc `alias ll="exa --long -all"
+       - Instalar Exa `sudo pacman -S exa`
+       - Establecer los alias en el bashrc `alias ll="exa --long -all"
     8. Ranger (terminal file manager)   
 15. Drivers de Amd
   - Instalar `sudo pacman -S mesa`
