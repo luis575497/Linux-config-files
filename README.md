@@ -12,6 +12,8 @@ IMAGEN
     3. Picom (Compositor de ventanas, transparencia)
        - Especificar la ubicación del archivo de configuración
        - Ejecutar esta version de picom para efectos y transiciones `yaourt -S picom-jonaburg-git`
+    4. Firejail (ejecutar de manera segura el navegador)
+
 4. Herramientas para el terminal
     1. Alacritty
     2. Starship prompt
