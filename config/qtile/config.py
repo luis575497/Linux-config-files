@@ -93,6 +93,9 @@ keys = [
     Key([mod], 'F3', lazy.spawn('amixer -D pulse sset Master 5%+')),
     Key([mod], 'F4', lazy.spawn('xrandr --output eDP --brightness 0.4')),
     Key([mod], 'F5', lazy.spawn('xrandr --output eDP --brightness 0.9')),
+
+    #Lanzar Navegador
+    Key([mod], 'f', lazy.spawn('firejail firefox'))
 ]
 
 #groups = [Group(i) for i in '12345789']
@@ -101,7 +104,7 @@ __groups = {
         1 : Group(name=""),                                                                # Grupo para los terminales
         2 : Group(name="", matches=[Match(wm_class=["firefox","brave"])]),                 # Grupo para los navegadores
         3 : Group(name=""),
-        4 : Group(name="", matches=[Match(wm_class=["Thunar"])]),                         # Grupo para File Explorer
+        4 : Group(name="", matches=[Match(wm_class=["Thunar"])]),                          # Grupo para File Explorer
         5 : Group(name="", matches=[Match(wm_class=["zoom"])]),                            # Grupo para Zoom
         }
 
