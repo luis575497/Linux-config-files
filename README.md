@@ -3,7 +3,9 @@ La creación de un entorno de trabajo en el cual estemos cómodos es esencial pa
 
 IMAGEN
 
-0. Firefox
+0. Firefox 
+    - Privacity badger (ext)
+    - noscript (ext)
 1. Yaourt
 2. Vim
    - Instalar desde AUR youcompleteme `yaourt -S vim-youcompleteme-git`
@@ -27,6 +29,11 @@ IMAGEN
        - Instalar Exa `sudo pacman -S exa`
        - Establecer los alias en el bashrc `alias ll="exa --long -all"
     8. Ranger (terminal file manager)
+    9. Ufw (firewall)
+    10. Protonvpn 
+        - Instalar la consola de protonvpn `sudo pacman build protonvpn-cli-ng` 
+        - Configurarla mediante las claves de acceso que ofrece para cada uduario
+    11. Mutt (cliente de correo)
 5. Drivers de Amd
    - Instalar `sudo pacman -S mesa`
 6. Tema para Grub
