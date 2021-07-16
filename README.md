@@ -6,6 +6,7 @@ IMAGEN
 0. Firefox 
     - Privacity badger (ext)
     - noscript (ext)
+    - uBlock Origin (ext)
 1. Yaourt
 2. Vim
    - Instalar desde AUR youcompleteme `yaourt -S vim-youcompleteme-git`
@@ -33,7 +34,15 @@ IMAGEN
     10. Protonvpn 
         - Instalar la consola de protonvpn `sudo pacman build protonvpn-cli-ng` 
         - Configurarla mediante las claves de acceso que ofrece para cada uduario
-    11. Mutt (cliente de correo)
+    11. Neomutt (cliente de correo)
+        - Clonar el repositorio https://github.com/LukeSmithxyz/mutt-wizard.git y seguir las instrucciones
+        - Instalar `sudo pacman -S neommut curl isync msmtp pass`
+        - Instalar `yaourt -S pam-gnupg`
+        - Clear clave GPG `gpg --full-generate-key`
+        - mw -a user@mail.com (Usar la contrasena para aplicaciones de gmail)
+        - mw -y user@mail.com 
+    12. Tmux
+        - oh my Tmux
 5. Drivers de Amd
    - Instalar `sudo pacman -S mesa`
 6. Tema para Grub
