@@ -1,0 +1,11 @@
+[Unit]
+Description=Notificaciones personalizadoas utilizando Dunst
+
+[Service]
+ExecStart=/bin/bash /home/luiyvane/scripts/notificaciones.sh
+Restart=Always
+
+[Install]
+WantedBy=multi-user.target
+
+

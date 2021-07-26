@@ -38,6 +38,7 @@ icons = {
         "battery":"",
         }
 
+# Atajos de teclados
 
 keys = [
     # Moverse entre ventanas
@@ -129,19 +130,6 @@ for i in groups:
     ])
 
 layouts = [
-    #layout.Columns(border_focus_stack='#d75f5f'),
-    #layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    #layout.Stack(num_stacks=2),
-    #layout.Bsp(
-    #    border_width=3,
-    #    border_focus=color[4],
-    #    border_normal=color[1],
-    #    single_border_width=0,
-    #    margin=2,
-    #    change_size=5,
-    #    ),
-    #layout.Matrix(),
     layout.MonadTall(
         border_width=3,
         border_focus=color[4],
@@ -150,12 +138,6 @@ layouts = [
         margin=2,
         change_size=5,
         ),
-    #layout.MonadWide(),
-    #layout.RatioTile(),
-    #layout.Tile(),
-    #layout.TreeTab(),
-    #layout.VerticalTile(),
-    #layout.Zoomy(),
 ]
 
 widget_defaults = dict(

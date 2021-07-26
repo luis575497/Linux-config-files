@@ -57,7 +57,7 @@ IMAGEN
    - `sudo pacman -S xorg-xrandr`
 9. Dunst (servidor de notificaciones)
    - Instalar lo siguiente `sudo pacman -S dunst libnotify`
-   - Agregar al xinitrc la el programa dunst ejecuntandose en segundo plano
+   - Agregar al xinitrc el programa dunst ejecuntandose en segundo plano `dunst &`
 10. Programas útiles
     1. Siv (Visualizador de imagenes
     2. Thunar (file manager)
