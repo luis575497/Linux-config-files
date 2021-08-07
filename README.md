@@ -43,6 +43,8 @@ IMAGEN
         - mw -y user@mail.com 
     12. Tmux
         - oh my Tmux
+    13. Zoxide (Remplazo de comando cd)
+
 5. Drivers de Amd
    - Instalar `sudo pacman -S mesa`
 6. Tema para Grub
