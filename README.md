@@ -44,6 +44,8 @@ IMAGEN
     12. Tmux
         - oh my Tmux
     13. Zoxide (Remplazo de comando cd)
+    14. Secured RM (Borrado seguro de archivos)
+        - crear un alias `alias="srm -vr -G"`
 
 5. Drivers de Amd
    - Instalar `sudo pacman -S mesa`
