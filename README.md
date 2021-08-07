@@ -46,6 +46,12 @@ IMAGEN
     13. Zoxide (Remplazo de comando cd)
     14. Secured RM (Borrado seguro de archivos)
         - crear un alias `alias="srm -vr -G"`
+    15. Paginas de información sobre programas
+        - TLDR
+    16. Buscadores
+        - Ripgrep (Buscador rescrito en Rust)
+        - Find (fd escrito en Rust)
+    17. LazyDocker (UI for docker)
 
 5. Drivers de Amd
    - Instalar `sudo pacman -S mesa`

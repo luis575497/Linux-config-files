@@ -2,7 +2,7 @@
 # ~/.bashrc
 #
 # Iniciar con neofetc
-neofetch
+neofetch 
 
 [[ $- != *i* ]] && return
 
@@ -148,9 +148,9 @@ alias l="exa --all"
 alias catn="cat"
 alias cat="bat"
 alias c="clear"
-
+alias rm="srm -vr -G"
 # PATH
-
+export PATH=/home/luiyvane/scripts:$PATH
 # Comandos Adicionales
 
 
@@ -161,4 +161,10 @@ export FZF_DEFAULT_COMMAND='rg --files --ignore -g'
 # Starship Prompt
 eval "$(starship init bash)"
 export STARSHIP_CONFIG=~/.config/starship.toml
+
+. "$HOME/.cargo/env"
+
+# Programa Zoxide
+eval "$(zoxide init bash)"
+
 
