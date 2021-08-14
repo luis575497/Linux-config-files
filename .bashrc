@@ -149,8 +149,9 @@ alias catn="cat"
 alias cat="bat"
 alias c="clear"
 alias rm="srm -vr -G"
+alias hq="atajosqtile.sh | yad --text-info"
 # PATH
-export PATH=/home/luiyvane/scripts:$PATH
+export PATH=/home/luiyvane/scripts:/home/luiyvane/.local/bin:$PATH
 # Comandos Adicionales
 
 

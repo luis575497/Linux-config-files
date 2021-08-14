@@ -58,7 +58,11 @@ Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'tomasr/molokai'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'ap/vim-css-color'                                             "CSS Color
-Plug 'cespare/vim-toml'
+Plug 'cespare/vim-tomlg'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+"Plug 'mhinz/vim-start
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -295,7 +299,7 @@ nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 " grep.vim
-nnoremap <silent> <leader>f :Rgrep<CR>
+nnoremap <leader>f :Rg<CR>
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'

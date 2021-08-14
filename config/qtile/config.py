@@ -39,71 +39,64 @@ icons = {
         }
 
 # Atajos de teclados
-
+#STARTKEYB
 keys = [
     # Moverse entre ventanas
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(),
-        desc="Move window focus to other window"),
+    Key([mod], "h", lazy.layout.left(), desc="Mover el foco de la ventana a la izquierda"),
+    Key([mod], "l", lazy.layout.right(), desc="Mover el foco de la ventana a la derecha"),
+    Key([mod], "j", lazy.layout.down(), desc="Mover el foco de la vanetana abajo"),
+    Key([mod], "k", lazy.layout.up(), desc="Mover foco de la ventana arriba"),
+    Key([mod], "space", lazy.layout.next(), desc="Mover el foco de la ventana hacia otra ventana"),
 
     # Mover las ventanas en un mismo espacio de trabajo
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
-        desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
-        desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
-        desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Mover ventana a la izquierda"),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Mover ventana a la derecha"),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Mover ventana hacia abajo"),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Mover ventana hacia arriba"),
 
     # Cambiar el tamano de las ventanas
-    Key([mod, "control"], "h", lazy.layout.grow(),
-        desc="Grow window to the left"),
-    Key([mod, "control"], "j", lazy.layout.shrink(),
-        desc="Grow window to the right"),
-    Key([mod, "control"], "k", lazy.layout.normalize(),
-        desc="Grow window down"),
-    Key([mod, "control"], "l", lazy.layout.maximize(), desc="Grow window up"),
+    Key([mod, "control"], "h", lazy.layout.grow(), desc="Aumentar tamaño de la ventana seleccionada"),
+    Key([mod, "control"], "j", lazy.layout.shrink(), desc="Disminuir tamaño de la ventana selecionada"),
+    Key([mod, "control"], "k", lazy.layout.normalize(), desc="Normalizar tamaños de las ventanas"),
+    Key([mod, "control"], "l", lazy.layout.maximize(), desc="Maximizar o minimizar al máximo el tamaño de la ventana seleccionada"),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
+    Key([mod], "Return", lazy.spawn(terminal), desc="Lanzar un terminal"),
 
     # Cambiar entre diferentes esquemas de ventanas
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "Tab", lazy.next_layout(), desc="Cambiar entre layouts"),
+    Key([mod], "q", lazy.window.kill(), desc="Eliminar ventana enfocada"),
 
     # Controles de qtile
-    Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(),
-        desc="Spawn a command using a prompt widget"),
+    Key([mod, "control"], "r", lazy.restart(), desc="Reiniciar Qtile"),
+    Key([mod, "control"], "q", lazy.shutdown(), desc="Apagar Qtile"),
+    #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
     # Lanzador de Rofi
-    Key([mod], 'r', lazy.spawn('rofi -show run')),
-    Key([mod], 'w', lazy.spawn('rofi -show window')),
+    Key([mod], 'r', lazy.spawn('rofi -show run'), desc="Lanzar Rofi"),
+    Key([mod], 'w', lazy.spawn('rofi -show window'), desc="Cambiar entre ventanas con Rofi"),
 
     # Control de audio y brillo
-    Key([mod], 'F2', lazy.spawn('amixer -D pulse sset Master 5%-')),
-    Key([mod], 'F3', lazy.spawn('amixer -D pulse sset Master 5%+')),
-    Key([mod], 'F4', lazy.spawn('xrandr --output eDP --brightness 0.4')),
-    Key([mod], 'F5', lazy.spawn('xrandr --output eDP --brightness 0.9')),
+    Key([mod], 'F2', lazy.spawn('amixer -D pulse sset Master 5%-'), desc="Disminuir 5% volumen"),
+    Key([mod], 'F3', lazy.spawn('amixer -D pulse sset Master 5%+'), desc="Aumentar 5% el volumen"),
+    Key([mod], 'F4', lazy.spawn('xrandr --output eDP --brightness 0.4'), desc="Poner el brillo de la pantalla al 40%"),
+    Key([mod], 'F5', lazy.spawn('xrandr --output eDP --brightness 0.9'), desc="Poner el brillo de la pantalla al 90%"),
 
     #Lanzar Navegador
-    Key([mod], 'f', lazy.spawn('firejail firefox'))
+    Key([mod], 'f', lazy.spawn('firejail firefox'), desc="Iniciar firefox en una sandbox"),
+    Key([mod], 'c', lazy.spawn('firejail google-chrome-stable'), desc="Iniciar chrome en una sandbox"),
 ]
+#ENDKEYB
 
 #groups = [Group(i) for i in '12345789']
 
 __groups = {
         1 : Group(name=""),                                                                # Grupo para los terminales
-        2 : Group(name="", matches=[Match(wm_class=["firefox","brave"])]),                 # Grupo para los navegadores
+        2 : Group(name="", matches=[Match(wm_class=["firefox","brave","google-chrome"])]),                 # Grupo para los navegadores
         3 : Group(name=""),
         4 : Group(name="", matches=[Match(wm_class=["Thunar"])]),                          # Grupo para File Explorer
         5 : Group(name="", matches=[Match(wm_class=["zoom"])]),                            # Grupo para Zoom

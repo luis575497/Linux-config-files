@@ -1,7 +1,7 @@
 import random
 
-nombres = ["Carmen","Lucia","Vanessa","Luis"]
-preguntas = [1,2,3,4]
+nombres = ["Maria del Carmen","Luis","Leo","Maitte"]
+preguntas = ["Introduccion y conclusiones","Mundo antiguo","Mundo Moderno","Institucionalizacio"]
 
 for x in range(4):
     nombre = random.choice(nombres)
