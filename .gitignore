@@ -1,0 +1,2 @@
+# Ignora la carpeta pycache
+/config/__pycache__/**/**
