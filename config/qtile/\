@@ -6,7 +6,7 @@
 # |_____\___/|___|____/
 
 from typing import List  # noqa: F401
-from libqtile import bar, layout, widget, hook, qtile
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, Match
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -30,7 +30,7 @@ color=colores()
 
 # Iconos para utilizar con la fuente Awesome
 icons = {
-        "clock":"🕓︁",
+        "clock":"",
         "wifi":"",
         "arrow":"",
         "keyboard":"",
@@ -39,9 +39,7 @@ icons = {
         "battery":"",
         }
 
-##############################################
-##########  Atajos de teclados ###############
-##############################################
+# Atajos de teclados
 #STARTKEYB
 keys = [
     # Moverse entre ventanas
@@ -78,7 +76,7 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Reiniciar Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Apagar Qtile"),
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], 'x', lazy.spawn('arcolinux-logout'), desc="Cerrar sesion"),
+
     # Lanzador de Rofi
     Key([mod], 'r', lazy.spawn('rofi -show drun'), desc="Lanzar Rofi"),
     Key([mod], 'w', lazy.spawn('rofi -show window'), desc="Cambiar entre ventanas con Rofi"),
@@ -96,10 +94,7 @@ keys = [
 ]
 #ENDKEYB
 
-
-#####################################################
-############# Configuracion de grupos ###############
-#####################################################
+#groups = [Group(i) for i in '12345789']
 
 __groups = {
         1 : Group(name=""),                                                                # Grupo para los terminales
@@ -135,7 +130,7 @@ layouts = [
         border_focus=color[4],
         border_normal=color[1],
         single_border_width=0,
-        margin=4,
+        margin=2,
         change_size=5,
         ),
 ]
@@ -147,40 +142,24 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-#####################################################
-########## Funciones para la barra ##################
-#####################################################
-
-def logout():
-    qtile.cmd_spawn('arcolinux-logout')
-
-def qtile_conf():
-    qtile.cmd_spawn('alacritty -e vim /home/luiyvane/.config/qtile/config.py')
-
-def wifi():
-    qtile.cmd_spawn('alacritty -e nmtui')
-
-#####################################################
-##########     Barra de inicio     ##################
-#####################################################
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.TextBox(text=icons["python"], background=color[0], foreground=color[2], fontsize=22, mouse_callbacks = {"Button1": qtile_conf}),
+                widget.TextBox(text=icons["python"], background=color[0], foreground=color[2], fontsize=22),
                 widget.CurrentLayout( foreground=color[3], fontshadow=color[1]),
                 widget.GroupBox( borderwidth = 2, highlight_method = "line", highlight_color=color[0], rounded=False, active=color[2], inactive=color[3], background=color[0], fontsize=23),
                 widget.TextBox(text="      "),
                 widget.WindowName(background=color[0], foreground=color[2]),
                 widget.TextBox(text=icons["arrow"], background=color[0], foreground=color[2], padding=1, fontsize=102, width=38),
                 widget.Net(background=color[2],interface="wlp1s0", format="{down}↓↑{up}", foreground=color[3]),
-                widget.TextBox(text=icons["wifi"],background=color[2], fontsize=35, mouse_callbacks={"Button1": wifi}),
+                widget.TextBox(text=icons["wifi"],background=color[2], fontsize=35),
                 widget.TextBox(text=icons["arrow"], background=color[2], foreground=color[3], padding=1, fontsize=102, width=38),
                 widget.TextBox(text=icons["battery"],background=color[3], foreground=color[2], fontsize=27),
                 widget.Battery(background=color[3], format="{percent:2.0%}",foreground=color[2]),
                 widget.TextBox(text=icons["arrow"], background=color[3], foreground=color[2], padding=1, fontsize=102, width=38),
-                widget.TextBox(text=icons["clock"],background=color[2], fontsize=18),
+                widget.TextBox(text=icons["clock"],background=color[2], fontsize=30),
                 widget.Clock(background=color[2],foreground=color[3],format='%I:%M'),
                 widget.TextBox(text=icons["arrow"], background=color[2], foreground=color[3], padding=1, fontsize=102, width=38),
                 widget.TextBox(text=icons["keyboard"], background=color[3], foreground=color[2], fontsize=25),
@@ -188,7 +167,7 @@ screens = [
                 widget.TextBox(text=icons["arrow"], background=color[3], foreground=color[2], padding=1, fontsize=102, width=38),
                 widget.TextBox(text="Vol:", background=color[2], foreground=color[3]),
                 widget.Volume(background=color[2],foreground=color[3]),
-                widget.TextBox(text="\u23FB", fontsize=18, background=color[2],mouse_callbacks={"Button1":logout}),
+                widget.QuickExit(default_text="\u23FB", fontsize=18, countdown_format="{}", countdown_start=10,background=color[2]),
                 widget.Moc(background=color[2],play_color=color[3], max_chars=20),
             ],
             25,
@@ -212,11 +191,6 @@ main = None  # WARNING: this is deprecated and will be removed soon
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-
-#############################################################################
-##############              Ventanas Flotantes              #################
-#############################################################################
-
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
     *layout.Floating.default_float_rules,
@@ -247,8 +221,8 @@ wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/scriptsq/autostart.sh'])
+    home = os.path.expanduser('~/.config/qtile/scriptsq/autostart.sh')
+    subprocess.call([home])
 
 '''
 @hook.subscribe.startup
