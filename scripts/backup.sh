@@ -11,7 +11,7 @@ cp -r /home/luiyvane/.config/qtile/* /home/luiyvane/Linux-config-files/config/qt
 cp /home/luiyvane/.config/starship.toml ~/Linux-config-files/config/
 
 cd /home/luiyvane/Linux-config-files
-git add .
-git commit -m "Update automatic"
+
+git commit -am "Update automatic"
 git push origin main
 
