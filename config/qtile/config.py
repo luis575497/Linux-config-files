@@ -79,6 +79,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Apagar Qtile"),
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], 'x', lazy.spawn('arcolinux-logout'), desc="Cerrar sesion"),
+
     # Lanzador de Rofi
     Key([mod], 'r', lazy.spawn('rofi -show drun'), desc="Lanzar Rofi"),
     Key([mod], 'w', lazy.spawn('rofi -show window'), desc="Cambiar entre ventanas con Rofi"),
@@ -88,7 +89,7 @@ keys = [
     Key([mod], 'F3', lazy.spawn('amixer -D pulse sset Master 5%+'), desc="Aumentar 5% el volumen"),
     Key([mod], 'F4', lazy.spawn('xrandr --output eDP --brightness 0.4'), desc="Poner el brillo de la pantalla al 40%"),
     Key([mod], 'F5', lazy.spawn('xrandr --output eDP --brightness 0.9'), desc="Poner el brillo de la pantalla al 90%"),
-    Key([mod],'p', lazy.spawn('flameshot gui'), desc="Realizar captura de pantalla con fireshot"),
+    Key([mod], 'p', lazy.spawn('flameshot gui'), desc="Realizar captura de pantalla con fireshot"),
 
     #Lanzar Navegador
     Key([mod], 'f', lazy.spawn('firejail firefox'), desc="Iniciar firefox en una sandbox"),
@@ -169,28 +170,134 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.TextBox(text=icons["python"], background=color[0], foreground=color[2], fontsize=22, mouse_callbacks = {"Button1": qtile_conf}),
-                widget.CurrentLayout( foreground=color[3], fontshadow=color[1]),
-                widget.GroupBox( borderwidth = 2, highlight_method = "line", highlight_color=color[0], rounded=False, active=color[2], inactive=color[3], background=color[0], fontsize=23),
-                widget.TextBox(text="      "),
-                widget.WindowName(background=color[0], foreground=color[2]),
-                widget.TextBox(text=icons["arrow"], background=color[0], foreground=color[2], padding=1, fontsize=102, width=38),
-                widget.Net(background=color[2],interface="wlp1s0", format="{down}↓↑{up}", foreground=color[3]),
-                widget.TextBox(text=icons["wifi"],background=color[2], fontsize=35, mouse_callbacks={"Button1": wifi}),
-                widget.TextBox(text=icons["arrow"], background=color[2], foreground=color[3], padding=1, fontsize=102, width=38),
-                widget.TextBox(text=icons["battery"],background=color[3], foreground=color[2], fontsize=27),
-                widget.Battery(background=color[3], format="{percent:2.0%}",foreground=color[2]),
-                widget.TextBox(text=icons["arrow"], background=color[3], foreground=color[2], padding=1, fontsize=102, width=38),
-                widget.TextBox(text=icons["clock"],background=color[2], fontsize=18),
-                widget.Clock(background=color[2],foreground=color[3],format='%I:%M'),
-                widget.TextBox(text=icons["arrow"], background=color[2], foreground=color[3], padding=1, fontsize=102, width=38),
-                widget.TextBox(text=icons["keyboard"], background=color[3], foreground=color[2], fontsize=25),
-                widget.KeyboardLayout(background=color[3], foreground=color[2],configured_keyboards=["us","es"]),
-                widget.TextBox(text=icons["arrow"], background=color[3], foreground=color[2], padding=1, fontsize=102, width=38),
-                widget.TextBox(text="Vol:", background=color[2], foreground=color[3]),
-                widget.Volume(background=color[2],foreground=color[3]),
-                widget.TextBox(text="\u23FB", fontsize=18, background=color[2],mouse_callbacks={"Button1":logout}),
-                widget.Moc(background=color[2],play_color=color[3], max_chars=20),
+                widget.TextBox(
+                    text=icons["python"],
+                    background=color[0],
+                    foreground=color[2],
+                    fontsize=22,
+                    mouse_callbacks = {"Button1": qtile_conf}
+                    ),
+                widget.CurrentLayout(
+                    foreground=color[3],
+                    fontshadow=color[1]
+                    ),
+                widget.GroupBox(
+                    borderwidth = 2,
+                    highlight_method = "line",
+                    highlight_color=color[0],
+                    rounded=False,
+                    active=color[2],
+                    inactive=color[3],
+                    background=color[0],
+                    fontsize=23),
+                widget.TextBox(
+                    text="      "),
+                widget.WindowName(
+                    background=color[0],
+                    foreground=color[2]
+                    ),
+                widget.TextBox(
+                    text=icons["arrow"],
+                    background=color[0],
+                    foreground=color[2],
+                    padding=1,
+                    fontsize=102,
+                    width=38
+                    ),
+                widget.Net(
+                    background=color[2],
+                    interface="wlp1s0",
+                    format="{down}↓↑{up}",
+                    foreground=color[3]
+                    ),
+                widget.TextBox(
+                    text=icons["wifi"],
+                    background=color[2],
+                    fontsize=35,
+                    mouse_callbacks={"Button1": wifi}
+                    ),
+                widget.TextBox(
+                    text=icons["arrow"],
+                    background=color[2],
+                    foreground=color[3],
+                    padding=1,
+                    fontsize=102,
+                    width=38
+                    ),
+                widget.TextBox(
+                    text=icons["battery"],
+                    background=color[3],
+                    foreground=color[2],
+                    fontsize=27
+                    ),
+                widget.Battery(
+                    background=color[3],
+                    format="{percent:2.0%}",
+                    foreground=color[2]
+                    ),
+                widget.TextBox(
+                    text=icons["arrow"],
+                    background=color[3],
+                    foreground=color[2],
+                    padding=1,
+                    fontsize=102,
+                    width=38
+                    ),
+                widget.TextBox(
+                    text=icons["clock"],
+                    background=color[2],
+                    fontsize=18
+                    ),
+                widget.Clock(
+                    background=color[2],
+                    foreground=color[3],
+                    format='%I:%M'
+                    ),
+                widget.TextBox(
+                    text=icons["arrow"],
+                    background=color[2],
+                    foreground=color[3],
+                    padding=1,
+                    fontsize=102,
+                    width=38
+                    ),
+                widget.TextBox(
+                    text=icons["keyboard"],
+                    background=color[3],
+                    foreground=color[2],
+                    fontsize=25
+                    ),
+                widget.KeyboardLayout(
+                    background=color[3],
+                    foreground=color[2],
+                    configured_keyboards=["us","es"]),
+                widget.TextBox(
+                    text=icons["arrow"],
+                    background=color[3],
+                    foreground=color[2],
+                    padding=1,
+                    fontsize=102,
+                    width=38
+                    ),
+                widget.TextBox(
+                    text="Vol:",
+                    background=color[2],
+                    foreground=color[3]
+                    ),
+                widget.Volume(
+                    background=color[2],
+                    foreground=color[3]
+                    ),
+                widget.TextBox(
+                    text="\u23FB",
+                    fontsize=18,
+                    background=color[2],
+                    mouse_callbacks={"Button1":logout}
+                    ),
+                widget.Moc(
+                    background=color[2],
+                    play_color=color[3],
+                    max_chars=20),
             ],
             25,
             background=color[0],

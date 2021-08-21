@@ -13,3 +13,5 @@ picom &
 # Iniciar con el teclado numerico
 numlockx on &
 
+# Iniciar servidor de notificaciones
+dunst &
