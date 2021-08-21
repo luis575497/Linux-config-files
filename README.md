@@ -18,7 +18,10 @@ IMAGEN
        - Especificar la ubicación del archivo de configuración
        - Ejecutar esta version de picom para efectos y transiciones `yaourt -S picom-jonaburg-git`
     4. Firejail (ejecutar de manera segura el navegador)
-    5. Fuente Fira Sans Medium 
+    5. Fuente Fira Sans Medium
+    6. Fireshot (Programa para hacer capturas de pantallas)
+    7. Arcolinux-logout (Programa de arcolinux para cerrar sesion)
+    8. Conky (Informacion del sistema) 
 4. Herramientas para el terminal
     1. Alacritty
     2. Starship prompt
