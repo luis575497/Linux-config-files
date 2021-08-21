@@ -1,0 +1,15 @@
+# Servicio para realizar un backup de los archivos de configuración 
+# Autor: Luis Enrique Lescano
+
+[Unit]
+Description=Backup de los archivos de configuración
+Wants=backup.timer
+
+[Service]
+ExecStart=/bin/bash /home/luiyvane/scripts/backup.sh
+Type=oneshot
+
+[Install]
+WantedBy=graphical.target
+
+

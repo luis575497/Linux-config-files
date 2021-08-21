@@ -1,0 +1,12 @@
+# Ejecutar el servicio de backup de manera automatica
+# Autor: Luis Enrique Lescano Borrego
+
+[Unit]
+Description=Crear cada 6 horas un backup de los archivos de configuración
+
+[Timer]
+OnBootSec=15min
+OnCalendar=*-*-* 18:00:00
+
+[Install]
+WantedBy=timers.target

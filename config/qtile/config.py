@@ -88,6 +88,7 @@ keys = [
     Key([mod], 'F3', lazy.spawn('amixer -D pulse sset Master 5%+'), desc="Aumentar 5% el volumen"),
     Key([mod], 'F4', lazy.spawn('xrandr --output eDP --brightness 0.4'), desc="Poner el brillo de la pantalla al 40%"),
     Key([mod], 'F5', lazy.spawn('xrandr --output eDP --brightness 0.9'), desc="Poner el brillo de la pantalla al 90%"),
+    Key([mod],'p', lazy.spawn('flameshot gui'), desc="Realizar captura de pantalla con fireshot"),
 
     #Lanzar Navegador
     Key([mod], 'f', lazy.spawn('firejail firefox'), desc="Iniciar firefox en una sandbox"),

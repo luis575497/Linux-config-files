@@ -10,3 +10,6 @@ picom &
 # Monitor del sistema
 (conky -c $HOME/.config/qtile/conf_programs/lean-conky-config/conky.conf &)
 
+# Iniciar con el teclado numerico
+numlockx on &
+
