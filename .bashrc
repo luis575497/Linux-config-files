@@ -306,7 +306,8 @@ alias hq="atajosqtile.sh"
 
 # PATH
 export PATH=/home/luiyvane/scripts:$PATH
-
+export PATH=$PATH:/usr/local/go/bin
+export GO111MODULE=on
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

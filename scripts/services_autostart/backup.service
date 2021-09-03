@@ -8,6 +8,7 @@ Wants=backup.timer
 [Service]
 ExecStart=/bin/bash /home/luiyvane/scripts/backup.sh
 Type=oneshot
+User=luiyvane
 
 [Install]
 WantedBy=graphical.target

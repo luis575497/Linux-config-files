@@ -79,6 +79,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Apagar Qtile"),
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], 'x', lazy.spawn('arcolinux-logout'), desc="Cerrar sesion"),
+    Key([mod], 'KP_Enter', lazy.spawn('deepin-calculator'), desc="Iniciar una claculadora"),
 
     # Lanzador de Rofi
     Key([mod], 'r', lazy.spawn('rofi -show drun'), desc="Lanzar Rofi"),
@@ -105,7 +106,7 @@ keys = [
 
 __groups = {
         1 : Group(name=""),                                                                # Grupo para los terminales
-        2 : Group(name="", matches=[Match(wm_class=["firefox","brave","google-chrome"])]),                 # Grupo para los navegadores
+        2 : Group(name="", matches=[Match(wm_class=["firefox","brave","google-chrome"])]), # Grupo para los navegadores
         3 : Group(name=""),
         4 : Group(name="", matches=[Match(wm_class=["Thunar"])]),                          # Grupo para File Explorer
         5 : Group(name="", matches=[Match(wm_class=["zoom"])]),                            # Grupo para Zoom
@@ -357,11 +358,3 @@ wmname = "LG3D"
 def autostart():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/scriptsq/autostart.sh'])
-
-'''
-@hook.subscribe.startup
-def starting():
-    ejecutar = os.path.expanduser('~/.config/qtile/scriptsq/')
-    subprocess.call([home])
-
-'''

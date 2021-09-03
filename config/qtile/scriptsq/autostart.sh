@@ -8,7 +8,8 @@ python ~/.config/qtile/scriptsq/background_change.py &
 picom &
 
 # Monitor del sistema
-(conky -c $HOME/.config/qtile/conf_programs/lean-conky-config/conky.conf &)
+#(conky -c $HOME/.config/qtile/conf_programs/lean-conky-config/conky.conf &)
+(conky -c ~/.config/qtile/conf_programs/.conkyrc &)
 
 # Iniciar con el teclado numerico
 numlockx on &
