@@ -1,12 +1,15 @@
 # Mi configuración para Linux
 La creación de un entorno de trabajo en el cual estemos cómodos es esencial para elevar nuestros niveles de productividad. Linux es un sistema operativo que nos brinda la posibilidad de modificarlo a nuestro gusto, razon por la cual decidí empezar a crear un entorno que se adapte a mis necesidades, a continuación se ve un ejemplo de como se ve mi configuración
 
-IMAGEN
+![Captura de pantalla de como luce la configuración de qtile](./qtileconf.png)
 
-0. Firefox 
-    - Privacity badger (ext)
-    - noscript (ext)
-    - uBlock Origin (ext)
+0. Navegadores
+    1. Firefox
+        - Privacity badger (ext)
+        - noscript (ext)
+        - uBlock Origin (ext)
+    2. Google Chrome
+    3. Brave
 1. Yaourt
 2. Vim
    - Instalar desde AUR youcompleteme `yaourt -S vim-youcompleteme-git`
@@ -31,7 +34,7 @@ IMAGEN
        - Agregar a bashrc el alias `alias cat="bat"`
     7. Exa
        - Instalar Exa `sudo pacman -S exa`
-       - Establecer los alias en el bashrc `alias ll="exa --long -all"
+       - Establecer los alias en el bashrc `alias ll="exa --long -all"`
     8. Ranger (terminal file manager)
     9. Ufw (firewall)
     10. Protonvpn 
@@ -47,15 +50,12 @@ IMAGEN
     12. Tmux
         - oh my Tmux
     13. Zoxide (Remplazo de comando cd)
-    14. Secured RM (Borrado seguro de archivos)
-        - crear un alias `alias="srm -vr -G"`
-    15. Paginas de información sobre programas
+    14. Paginas de información sobre programas
         - TLDR
-    16. Buscadores
+    15. Buscadores
         - Ripgrep (Buscador rescrito en Rust)
         - Find (fd escrito en Rust)
-    17. LazyDocker (UI for docker)
-
+    16. LazyDocker (UI for docker)
 5. Drivers de Amd
    - Instalar `sudo pacman -S mesa`
 6. Tema para Grub
@@ -70,9 +70,9 @@ IMAGEN
    - `sudo pacman -S xorg-xrandr`
 9. Dunst (servidor de notificaciones)
    - Instalar lo siguiente `sudo pacman -S dunst libnotify`
-   - Agregar al xinitrc el programa dunst ejecuntandose en segundo plano `dunst &`
+   - Agregar al script de autoinicio el programa dunst en segundo plano `dunst &`
 10. Programas útiles
-    1. Siv (Visualizador de imagenes
+    1. Nomacs (Visualizador de imagenes)
     2. Thunar (file manager)
         - instalar thunar `sudo pacman -S thunar`
         - instalar un administrador de temas gtk `sudo pacman -S lxappearance`

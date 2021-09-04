@@ -90,7 +90,10 @@ keys = [
     Key([mod], 'F3', lazy.spawn('amixer -D pulse sset Master 5%+'), desc="Aumentar 5% el volumen"),
     Key([mod], 'F4', lazy.spawn('xrandr --output eDP --brightness 0.4'), desc="Poner el brillo de la pantalla al 40%"),
     Key([mod], 'F5', lazy.spawn('xrandr --output eDP --brightness 0.9'), desc="Poner el brillo de la pantalla al 90%"),
+
+    # Programas variados
     Key([mod], 'p', lazy.spawn('flameshot gui'), desc="Realizar captura de pantalla con fireshot"),
+    #Key([mod], 'h', lazy.spawncmd('exec atajosqtile.sh'), desc="Realizar captura de pantalla con fireshot"),
 
     #Lanzar Navegador
     Key([mod], 'f', lazy.spawn('firejail firefox'), desc="Iniciar firefox en una sandbox"),
@@ -105,11 +108,11 @@ keys = [
 #####################################################
 
 __groups = {
-        1 : Group(name=""),                                                                # Grupo para los terminales
-        2 : Group(name="", matches=[Match(wm_class=["firefox","brave","google-chrome"])]), # Grupo para los navegadores
+        1 : Group(name=""),                                                                        # Grupo para los terminales
+        2 : Group(name="", matches=[Match(wm_class=["firefox","Brave-browser","google-chrome"])]), # Grupo para los navegadores
         3 : Group(name=""),
-        4 : Group(name="", matches=[Match(wm_class=["Thunar"])]),                          # Grupo para File Explorer
-        5 : Group(name="", matches=[Match(wm_class=["zoom"])]),                            # Grupo para Zoom
+        4 : Group(name="", matches=[Match(wm_class=["Thunar"])]),                                  # Grupo para File Explorer
+        5 : Group(name="", matches=[Match(wm_class=["zoom"])]),                                    # Grupo para Zoom
         }
 
 groups = [__groups[i] for i in __groups]
