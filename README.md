@@ -1,5 +1,5 @@
 # Mi configuración para Linux
-La creación de un entorno de trabajo en el cual estemos cómodos es esencial para elevar nuestros niveles de productividad. Linux es un sistema operativo que nos brinda la posibilidad de modificarlo a nuestro gusto, razon por la cual decidí empezar a crear un entorno que se adapte a mis necesidades, a continuación se ve un ejemplo de como se ve mi configuración
+La creación de un entorno de trabajo en el cual estemos cómodos es esencial para elevar nuestros niveles de productividad. Linux es un sistema operativo que nos brinda la posibilidad de modificarlo a nuestro gusto, razón por la cual decidí empezar a crear un entorno que se adapte a mis necesidades.
 
 ![Captura de pantalla de como luce la configuración de qtile](./qtileconf.png)
 
