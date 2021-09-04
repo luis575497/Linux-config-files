@@ -10,7 +10,6 @@ La creación de un entorno de trabajo en el cual estemos cómodos es esencial pa
         - uBlock Origin (ext)
     2. Google Chrome
     3. Brave
-1. Yaourt
 2. Vim
    - Instalar desde AUR youcompleteme `yaourt -S vim-youcompleteme-git`
 3. Qtile
@@ -26,9 +25,10 @@ La creación de un entorno de trabajo en el cual estemos cómodos es esencial pa
     7. Arcolinux-logout (Programa de arcolinux para cerrar sesion)
     8. Conky (Informacion del sistema) 
 4. Herramientas para el terminal
-    1. Alacritty
-    2. Starship prompt
-    3. Nerd Fonts
+    1. Yaourt (AUR)
+    2. Alacritty
+    3. Starship prompt
+    4. Nerd Fonts
     5. Fzf
     6. Bat
        - Agregar a bashrc el alias `alias cat="bat"`
